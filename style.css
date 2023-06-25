@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
+:root{
+    --accent: #26547C;
+    --secondary:#92BADD;
+    --main: #EBEBEB;
+    --black: #202020;
+    --sombra: 2px 3px 10px 0px rgba(0,0,0,0.27);
+}
+body{
+    min-height: 100vh;
+    background: var(--main);
+}
+header{
+    background-color: var(--accent);
+    padding: 2em;
+    font-size: 1.3em;
+    text-align: center;
+    color: var(--main);
+    text-shadow: var(--sombra);
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height:  40vh;
+}
+.calculadora{
+    overflow: hidden;
+    max-width: 18em;    
+    margin: 1.5em auto;
+    font-size: 2.45em;
+    background-color: #222;
+    border-radius: 13px;
+}
+.calculadora .calculadora_tela{
+    background-color: var(--black);
+    padding: 0.75em 0.90em;
+    text-align: right;
+    width: 100%;
+    color: var(--main);
+}
+.calculadora .calculadora_teclas{
+    display: grid;
+    grid-gap: 1.4px;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+}
+.calculadora_teclas > *{
+    outline: none;
+    border: none;
+    font-size: 1.02em;
+    background-color: #fff;
+    padding: 0.5em 1.25em;
+    text-align: center;
+}
+.calculadora_teclas > *:hover{
+    cursor: pointer;
+    background-color: #ddd;
+}
+.tecla_operador, .tecla_igual{
+    background-color: #eee;
+}
+
+.tecla_igual{
+    grid-column: -2;
+    grid-row:2/ span 4;
+}
