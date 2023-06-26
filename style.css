@@ -36,13 +36,15 @@ main{
     max-width: 18em;    
     margin: 1.5em auto;
     font-size: 2.45em;
-    background-color: #222;
+    border: solid 2px black;
     border-radius: 13px;
+    box-shadow: var(--sombra);
 }
 .calculadora .calculadora_tela{
     background-color: var(--black);
-    padding: 0.75em 0.90em;
+    padding: .85em 0.90em;
     text-align: right;
+    font-size: 1.3em;
     width: 100%;
     color: var(--main);
 }
@@ -55,10 +57,11 @@ main{
 .calculadora_teclas > *{
     outline: none;
     border: none;
-    font-size: 1.02em;
+    font-size: .8em;
     background-color: #fff;
     padding: 0.5em 1.25em;
     text-align: center;
+    box-shadow: var(--sombra);
 }
 .calculadora_teclas > *:hover{
     cursor: pointer;
