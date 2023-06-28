@@ -1,21 +1,22 @@
 /* Vou refazer o códigp do zero. */
 /* Função calcular - criada depois */
 const calcular = (n1, operator, n2) => {
-    let resultado = ''
+    const primeiroNum = parseFloat(n1)
+    const segundoNum = parseFloat (n2)
+    //Tem a opção de ficar com ou sem colchetes, vou mantê-las
     if(operator === 'adicionar'){
-        resultado = parseFloat(n1) + parseFloat(n2)
-    } else if(operator === 'subtrair'){
-        resultado = parseFloat(n1) - parseFloat(n2)
+        return primeiroNum + segundoNum
+    } 
+    if(operator === 'subtrair'){
+        return primeiroNum - segundoNum
     }
-    else if(operator === 'multiplicar'){
-        resultado = parseFloat(n1) * parseFloat(n2)
+    if(operator === 'multiplicar'){
+        return primeiroNum * segundoNum
     }
-    else if(operator === 'dividir'){
-        resultado = parseFloat(n1) / parseFloat(n2)
+    if(operator === 'dividir'){
+        return primeiroNum / segundoNum
     }
-    return resultado
 }
-
 
 const calculadora = document.querySelector('.calculadora')
 const teclas = calculadora.querySelector('.calculadora_teclas')

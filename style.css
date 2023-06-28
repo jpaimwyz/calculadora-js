@@ -64,11 +64,11 @@ main{
     text-align: center;
     box-shadow: var(--sombra);
 }
-.calculadora_teclas > *:is(:active){
+.calculadora_teclas > *:active{
     cursor: pointer;
     background-color: #ddd;
 }
-.calculadora_teclas .pressionado{
+.calculadora_teclas > .pressionado{
     box-shadow: var(--sombra) inset;
 }
 .tecla_operador, .tecla_igual{
