@@ -14,7 +14,6 @@ const calcular = (n1, operador, n2) => {
     return resultado
 }
 
-
 const calculadora = document.querySelector('.calculadora')
 const teclas = calculadora.querySelector('.calculadora_teclas')
 const tela = document.querySelector('.calculadora_tela')
@@ -35,33 +34,59 @@ teclas.addEventListener('click', e =>{
             } else {
                 tela.textContent = numNaTela + teclaConteudo
             }
+            calculadora.dataset.previousKeyType = 'numero'
         }
         
-        if(
-            action === 'adicionar' || 
+        if( action === 'adicionar' || 
             action === 'subtrair' || 
             action === 'multiplicar' || 
-            action === 'dividir'
-            ){
+            action === 'dividir')
+            {
+            const pValor = calculadora.dataset.firstValue
+            const operacao = calculadora.dataset.operador
+            const sValor = numNaTela
+
+            if(pValor && operacao && previousKeyType !== 'operador'){
+                const vCalculado = calcular(pValor, operacao, sValor)
+                tela.textContent = vCalculado
+
+                calculadora.data.firstValue = vCalculado
+            } else {
+                calculadora.dataset.firstValue = numNaTela
+            }
+
             tecla.classList.add('pressionado')
             calculadora.dataset.previousKeyType = 'operador'
-            calculadora.dataset.firstValue = numNaTela
             calculadora.dataset.operador = action
-            }
-       
+        }
         
         if(action === 'decimal'){
-            tela.textContent = numNaTela + '.'
+            if(!numNaTela.includes('.')){
+                tela.textContent = numNaTela + '.'
+            } else if(previousKeyType === 'operador'){
+                tela.textContent = '0.'
+            }
+            calculadora.dataset.previousKeyType = 'decimal'
         }
+
         if(action === 'limpar'){
             tela.textContent = '0'
+            calculadora.dataset.previousKeyType = 'limpar'
         }
         if(action === 'calcular'){
             const pValor = calculadora.dataset.firstValue
             const operacao = calculadora.dataset.operador
             const sValor = numNaTela
 
-            tela.textContent = calcular(pValor, operacao, sValor)
+            if(pValor){
+                if(previousKeyType === 'calcular'){
+                    pValor = numNaTela
+                }
+                
+                tela.textContent = calcular(pValor, operacao, sValor)
+            }
+
+            calculadora.dataset.previousKeyType = 'calcular'
         }
     }
 })
